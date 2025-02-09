@@ -9,7 +9,8 @@ import RegisterPatient from './pages/RegisterPatient'
 import SelectPatient from './pages/SelectPatient'
 import Medications from './pages/Medications'
 import Signin from './pages/Signin'
-
+import Landing from './pages/Landing'
+import Contact from './pages/Contact'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,7 +44,14 @@ const router = createBrowserRouter([
     path: "/add-patient",
     element: <RegisterPatient/>
   },
-
+  {
+    path: "/landing",
+    element: <Landing/>
+  },
+  {
+    path: "/contact",
+    element: <Contact/>
+  },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(

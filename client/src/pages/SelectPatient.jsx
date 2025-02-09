@@ -33,7 +33,7 @@ export default function SelectPatient(){
             // Should return the cookie data
         })
         .catch(function (error) {
-         //ß console.log(error.response.data);
+         console.log(error.response.data);
         });
 
     }, []);
@@ -46,7 +46,7 @@ export default function SelectPatient(){
     return(
         <div>
             <Navbar/>
-            <div className="container w-50 jusitfy-content-center">
+            <div className="container  vh-100 d-flex justify-content-center align-items-center" >
                
                 {/* <div className="col text-center">
                     <h1>Choose Patient:</h1>
@@ -63,24 +63,38 @@ export default function SelectPatient(){
                         </ul>
                     </div>
                 </div> */}
-                <div className="text-center justify-content-center ">
-                    <form onSubmit={handleSubmit} className="row g-3  align-items-center jusitfy-content-center m-3 ">
-                        <div className="col-6 text-end">
-                            <label  className="col-form-label fs-4">Select a Patient:</label>
-                        </div>
-                        <div className="col-6">
-                            <select onChange={(e) => setSelectedPatientId(e.target.value)} className="form-select fs-5" aria-label="Default select example">
+                <div className="row w-100 " style={{height:"700px"}}>
+                    <div className="col-6 p-0 position-relative overflow-hidden d-none d-lg-block d-md-block d-xl-block ">
+                        <img src="../src/assets/residents.jpg" className="position-absolute object-fit-cover" style={{height:"700px"}}></img>
+                    </div>
+                    <div className="col-lg-6 col-md-6 col-xl-6 col-sm-12 col-xs-12 p-0">
+                        <div className="d-flex h-100 justify-content-center align-items-center" style={{backgroundColor: "#a8ffca" }}>
+                            <div>
+                                <h1 className='text-dark fs-5'>Select Resident</h1>
+                                <form onSubmit={handleSubmit} >
+                        
+                                    
                                 
-                                {patients.map(patient => (
-                                    <option key={patient._id} value={patient._id}>{patient.firstName + " " + patient.lastName}</option>
-                                ))} 
-                            </select>
-                        </div>
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                    </form>
+                            
+                                        <select onChange={(e) => setSelectedPatientId(e.target.value)} className="form-select fs-5" aria-label="Default select example">
+                                            
+                                            {patients.map(patient => (
+                                                <option key={patient._id} value={patient._id}>{patient.firstName + " " + patient.lastName}</option>
+                                            ))} 
+                                        </select>
+                        
+                                    <button type="submit" className="btn btn-primary">Submit</button>
+                                    <Link to ={'/add-patient/'} relative="route" className="box btn btn-success m-3">Register a New Patient</Link>
+                                </form>
 
-                    <Link to ={'/add-patient/'} relative="route" className="box btn btn-success m-1">Register a New Patient</Link>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                   
                 </div>
+               
                 
                
               

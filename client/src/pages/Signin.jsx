@@ -22,6 +22,7 @@ export default function Signin(){
             console.log(response);
             navigate('/select-patient/')
         }).catch(function (error) {
+            console.log(error)
             if(error.response.status == "400"){
                 alert(error.response.data.errorMessage);
             }

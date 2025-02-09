@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
-const PORT = process.env.PORT || 5000;
+
 const PatientModel = require("./models/PatientModel");
 const UserModel = require("./models/UserModel")
 let jwt = require('jsonwebtoken');
@@ -11,6 +11,9 @@ const auth = require('./middleware/auth');
 const bcrypt = require('bcryptjs/dist/bcrypt');
 const cookieParser = require('cookie-parser');
 
+require('dotenv').config()
+const PORT = process.env.PORT || 5000;
+console.log(process.env.PORT)
 // Connect to MongoDB
 const atlas_uri = process.env.ATLAS_URI || "";
 mongoose.connect(atlas_uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -23,7 +26,7 @@ app.listen(PORT, () => {
 });
 
 app.use(cors({
-    origin: 'http://localhost:5173',  // Frontend URL
+    origin: 'http://localhost:5174',  // Frontend URL
     credentials: true,               // Allow credentials (cookies) to be sent
 }));
 
@@ -134,7 +137,7 @@ app.post("/users/signin",async (req,res)=>{
         )
         console.log(token)
                 
-        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173'); 
+        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5174'); 
 
         res.setHeader('Access-Control-Allow-Credentials', 'true'); 
         
